@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <link rel="stylesheet" href="/static/css/style.css">
+                <title>Insta485</title>
+        </head>
+        <body>
+                <div class="topright">
+                        <a href="/explore/" > <b>explore</b> </a> | <a href="/u/{{logname}}/" > <b>{{logname}}</b> </a> </div>
+                <h1>
+                        <a href="/"><img class = "logo" src="/static/images/insta485logo.png" alt="insta485_logo"/></a>
+                         Insta485 </h1>
+                <hr>
+                <h2> <img class="user_pic" src={{user_img_url}}
+                   alt="owner_pic"/> {{logname}} <h2>
+                <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+                <form action="/accounts/edit/" method="post" enctype="multipart/form-data">
+                  Photo<input type="file" name="file"> <br>
+                  Name<input type="text" name="fullname" value="{{fullname}}"/> <br>
+                  Email<input type="text" name="email" value="{{email}}"/> <br>
+                  <input type="submit" name="update" value="submit"/> <br>
+                </form>
+                <a href="/accounts/password/" > <b>Change Password</b> </a> <br>
+                <a href="/accounts/delete/" > <b>Delete Account</b> </a> <br>
+        </body>
+</html>

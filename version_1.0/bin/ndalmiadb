@@ -1,0 +1,68 @@
+#!/bin/bash
+#ndalmiadb
+#
+# 
+# Stop on errors, print commands
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+
+# Sanity check command line options
+usage() {
+  echo "Usage: $0 (create|destroy|reset|dump)"
+}
+
+if [ $# -ne 1 ]; then
+  usage
+  exit 1
+fi
+
+CREATE_SUCCESS="+ mkdir -p var/uploadsn\n
++ sqlite3 var/ndalmia.sqlite3 < sql/schema.sql\n
++ sqlite3 var/ndalmia.sqlite3 < sql/data.sql\n
++ cp sql/uploads/* var/uploads/"
+
+DESTROY_SUCCESS="+ rm -rf var/ndalmia.sqlite3 var/uploads"
+
+RESET_SUCCESS="$DESTROY_SUCCESS$CREATE_SUCCESS"
+
+# Parse argument.  $1 is the first argument
+case $1 in
+  "create")
+    mkdir -p var/uploads
+    sqlite3 var/ndalmia.sqlite3 < sql/schema.sql
+    sqlite3 var/ndalmia.sqlite3 < sql/data.sql
+    cp sql/uploads/* var/uploads/
+    echo "$CREATE_SUCCESS"
+    ;;
+
+  "destroy")
+    rm -rf var/ndalmia.sqlite3 var/uploads
+    echo "$DESTROY_SUCCESS"
+    ;;
+
+  "reset")
+    rm -rf var/ndalmia.sqlite3 var/uploads
+    mkdir -p var/uploads
+    sqlite3 var/ndalmia.sqlite3 < sql/schema.sql
+    sqlite3 var/ndalmia.sqlite3 < sql/data.sql
+    cp sql/uploads/* var/uploads/
+    echo "$RESET_SUCCESS"
+    ;;
+
+  "dump") 
+    echo "+ sqlite3 -batch -line var/ndalmia.sqlite3 'SELECT * FROM comments' \n"
+    sqlite3 -batch -line var/ndalmia.sqlite3 'SELECT * FROM comments'
+    echo "+ sqlite3 -batch -line var/ndalmia.sqlite3 'SELECT * FROM following' \n"
+    sqlite3 -batch -line var/ndalmia.sqlite3 'SELECT * FROM following'
+    echo "+ sqlite3 -batch -line var/ndalmia.sqlite3 'SELECT * FROM likes' \n"
+    sqlite3 -batch -line var/ndalmia.sqlite3 'SELECT * FROM likes'
+    echo "+ sqlite3 -batch -line var/ndalmia.sqlite3 'SELECT * FROM posts' \n"
+    sqlite3 -batch -line var/ndalmia.sqlite3 'SELECT * FROM posts'
+    echo "+ sqlite3 -batch -line var/ndalmia.sqlite3 'SELECT * FROM users' \n"
+    sqlite3 -batch -line var/ndalmia.sqlite3 'SELECT * FROM users'
+    ;;
+  *)
+    usage
+    exit 1
+    ;;
+esac

@@ -1,0 +1,39 @@
+p {
+  border: 2px solid black;
+  margin: 108px;
+}
+
+.topright {
+  position: absolute;
+  top: 26px;
+  right: 16px;
+  font-size: 18px;
+}
+
+.logo {
+  height: 40px;
+  width: 75px;
+}
+
+.user_pic {
+  margin: 10px
+  height: 40px;
+  width: 40px;
+}
+
+.user_upload {
+  height: 500px;
+  width: 598px;
+}
+
+.in_grid {
+  height: 400px;
+  width: 400px;
+}
+
+.icon {
+  margin: 10px
+  height: 40px;
+  width: 40px;
+}
+

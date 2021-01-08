@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <link rel="stylesheet" href="/static/css/style.css">
+                <title>Insta485</title>
+        </head>
+        <body>
+                <div class="topright">
+                        <a href="/accounts/login/" > <b>login</b> </a></div>
+                <h1>
+                        <a href="/"><img class = "logo" src="/static/images/insta485logo.png" alt="insta485_logo"/></a>
+                         Insta485 </h1>
+                <hr>
+
+                <!-- DO NOT CHANGE THIS (aside from styling) -->
+                <form action="/accounts/login/" method="post" enctype="multipart/form-data">
+                  Username<input type="text" name="username"/> <br>
+                  Password<input type="password" name="password"/> <br>
+                  <input type="submit" value="login"/>
+                </form>
+                <div> Don't have an account? <a href="/accounts/create/"> <b>Sign Up</b> </a></div>
+        </body>
+</html>

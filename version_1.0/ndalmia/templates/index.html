@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <link rel="stylesheet" href="/static/css/style.css">
+                <title>Insta485</title>
+        </head>
+        <body>
+                <div class="topright">
+                        <a href="/explore/" > <b>explore</b> </a> | <a href="/u/{{logname}}/" > <b>{{logname}}</b> </a> </div>
+                <h1>
+                        <a href="/"><img class = "logo" src="/static/images/insta485logo.png" alt="insta485_logo"/></a>
+                         Insta485 </h1>
+                <hr>
+
+                {% for post in posts %}
+                <p>
+                        <a href="/u/{{post.owner}}/" >
+                                <img class="user_pic" src="{{post.owner_img_url}}"
+                                     alt="owner_pic"/>
+                                <b>{{post.owner}}</b></a> <a href="/p/{{post.postid}}/" >{{post.timestamp}}</a> <br> <br>
+                        <img class="user_upload" src="{{post.img_url}}"
+                                   alt="owner_upload"/> <br> <br>
+                        {{post.likes}} {% if post.likes == 1 %} like
+                                     {% else %} likes
+                                     {% endif %} <br> <br>
+                        {% if post.post_liked_by_logname %}
+                        <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+                        <form action="/" method="post" enctype="multipart/form-data">
+                          <input type="hidden" name="postid" value="{{post.postid}}"/>
+                          <input type="submit" name="unlike" value="unlike"/>
+                        </form>
+                        {% else %}
+                        <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+                        <form action="/" method="post" enctype="multipart/form-data">
+                          <input type="hidden" name="postid" value="{{post.postid}}"/>
+                          <input type="submit" name="like" value="like"/>
+                        </form>
+                        {% endif %}
+                        {% for comment in post.comments %}
+                        <a href="/u/{{comment.owner}}/" ><b>{{comment.owner}}</b></a> {{comment.text}} <br> <br>
+                        {% endfor %}
+                        <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+                        <form action="/" method="post" enctype="multipart/form-data">
+                          <input type="hidden" name="postid" value="{{post.postid}}"/>
+                          <input type="text" name="text"/>
+                          <input type="submit" name="comment" value="comment"/>
+                        </form>
+          </p>
+                {% endfor %}
+        </body>
+</html>

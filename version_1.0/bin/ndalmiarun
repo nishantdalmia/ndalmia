@@ -1,0 +1,20 @@
+#!/bin/bash
+# insta485run
+
+# Stop on errors
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+
+DATABASE="var/ndalmia.sqlite3"
+
+# Run ndalmiadb create if the database does not already exist
+if [ ! -e "$DATABASE" ]; then
+    ./bin/insta485db create
+fi
+
+# Set Flask environment variables
+export FLASK_ENV=development
+export FLASK_APP=insta485
+
+# Run server
+flask run --host 0.0.0.0 --port 8000
