@@ -1,13 +1,13 @@
 # Python
 *.pyc
-__pycache__/
+version_1.0/__pycache__/
 *.egg-info*
-dist/
-env/
-venv/
-venv3/
-.venv/
-.pytest_cache
+version_1.0/dist/
+version_1.0/env/
+version_1.0/venv/
+version_1.0/venv3/
+version_1.0/.venv/
+version_1.0/.pytest_cache
 
 # Database
-var/
+version_1.0/var/
