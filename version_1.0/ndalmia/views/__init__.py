@@ -1,2 +1,2 @@
-"""Views, one for each Insta485 page."""
-from insta485.views.index import show_index
+"""Views, one for each ndalmia page."""
+from ndalmia.views.index import show_index

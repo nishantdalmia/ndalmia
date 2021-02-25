@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>ndalmia</title>
+  </head>
+  <body>
+    <div class="row heading">
+      <div class="col-md-4">
+        <a href="/" > <img class="head_icon" src="/static/images/ndalmia_casual_icon.jpg" /> </a>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="name"> {{name}} </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="emailocation"> {{email}} </div>
+          </div>
+          <div class="col-md-4">
+            <div class="emailocation"> {{location}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row subheading"> Programming Projects </div>
+    {% for ppost in pposts %}
+    <div class="edupost">
+        <div class="row">
+          <div class="col-md-6">
+              <div class="company"> {{ppost.title}} </div>
+          </div>
+          <div class="col-md-4">
+              <div class="location">{{ppost.location}} </div>
+          </div>
+          <div class="col-md-2">
+              <div class="btn btn-primary"> <a href={{ppost.link}}> Link </a> </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="description"> {{ppost.description}} </div>
+        </div>
+        {% if admin_logged_in %}
+        <form action="/p/delete/" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-10"> </div>
+            <div class="col-md-2">
+              <div class="btn btn-primary">
+                Delete<input type="submit" name="delete" value="{{ppost.ppostid}}"/>
+              </div>
+            </div>
+          </div>
+        </form>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    {% if admin_logged_in %}
+    <div class="row">
+      <div class="col-md-10"> </div>
+      <div class="col-md-2">
+        <a href="/p/" class="btn btn-primary"> Add </a>
+      </div>
+    </div>
+    {% endif %}
+
+  </body>
+</html>

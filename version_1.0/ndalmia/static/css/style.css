@@ -1,39 +1,120 @@
-p {
-  border: 2px solid black;
-  margin: 108px;
+.admin_code {
+  padding: 30%;
 }
 
-.topright {
-  position: absolute;
-  top: 26px;
-  right: 16px;
-  font-size: 18px;
+.heading {
+  border: 30px;
+  padding: 30px;
+  height: 60%;
+  width: 100%;
 }
 
-.logo {
-  height: 40px;
-  width: 75px;
+.head_icon {
+  height: 100%;
+  width: 30%;
+  align-content: center;
+  border-radius: 50%
 }
 
-.user_pic {
-  margin: 10px
-  height: 40px;
-  width: 40px;
+.name {
+  width: 50%;
+  height: 50px;
+  align-content: center;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 40px;
 }
 
-.user_upload {
-  height: 500px;
-  width: 598px;
+.emailocation {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  padding: 16px;
 }
 
-.in_grid {
-  height: 400px;
-  width: 400px;
+.subheading {
+  border: 30px;
+  padding: 30px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 40px;
+  align-content: center;
 }
 
 .icon {
-  margin: 10px
-  height: 40px;
-  width: 40px;
+  height: 80%;
+  width: 30%;
+  align-content: center;
+  border-radius: 50%
 }
 
+.institution {
+  padding: 16px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.company {
+  padding: 16px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.major {
+  padding: 8px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.title {
+  padding: 8px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.location {
+  padding: 10px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.time {
+  padding: 8px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.textaboutme {
+  padding: 16px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+}
+
+.description {
+  padding: 8px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+}
+
+.edupost {
+  padding: 20px;
+  border: 4px solid black;
+  border-radius: 5px;
+  margin: 20px;
+  height: 40%
+  width: 100%
+}
+
+.adders {
+  padding: 10%;
+}

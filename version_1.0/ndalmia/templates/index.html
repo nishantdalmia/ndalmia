@@ -1,51 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-        <head>
-                <link rel="stylesheet" href="/static/css/style.css">
-                <title>Insta485</title>
-        </head>
-        <body>
-                <div class="topright">
-                        <a href="/explore/" > <b>explore</b> </a> | <a href="/u/{{logname}}/" > <b>{{logname}}</b> </a> </div>
-                <h1>
-                        <a href="/"><img class = "logo" src="/static/images/insta485logo.png" alt="insta485_logo"/></a>
-                         Insta485 </h1>
-                <hr>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>ndalmia</title>
+  </head>
+  <body>
+    <div class="row heading">
+      <div class="col-md-4">
+        <a href="/" > <img class="head_icon" src="/static/images/ndalmia_casual_icon.jpg" /> </a>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="name"> {{name}} </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="emailocation"> {{email}} </div>
+          </div>
+          <div class="col-md-4">
+            <div class="emailocation"> {{location}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                {% for post in posts %}
-                <p>
-                        <a href="/u/{{post.owner}}/" >
-                                <img class="user_pic" src="{{post.owner_img_url}}"
-                                     alt="owner_pic"/>
-                                <b>{{post.owner}}</b></a> <a href="/p/{{post.postid}}/" >{{post.timestamp}}</a> <br> <br>
-                        <img class="user_upload" src="{{post.img_url}}"
-                                   alt="owner_upload"/> <br> <br>
-                        {{post.likes}} {% if post.likes == 1 %} like
-                                     {% else %} likes
-                                     {% endif %} <br> <br>
-                        {% if post.post_liked_by_logname %}
-                        <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
-                        <form action="/" method="post" enctype="multipart/form-data">
-                          <input type="hidden" name="postid" value="{{post.postid}}"/>
-                          <input type="submit" name="unlike" value="unlike"/>
-                        </form>
-                        {% else %}
-                        <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
-                        <form action="/" method="post" enctype="multipart/form-data">
-                          <input type="hidden" name="postid" value="{{post.postid}}"/>
-                          <input type="submit" name="like" value="like"/>
-                        </form>
-                        {% endif %}
-                        {% for comment in post.comments %}
-                        <a href="/u/{{comment.owner}}/" ><b>{{comment.owner}}</b></a> {{comment.text}} <br> <br>
-                        {% endfor %}
-                        <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
-                        <form action="/" method="post" enctype="multipart/form-data">
-                          <input type="hidden" name="postid" value="{{post.postid}}"/>
-                          <input type="text" name="text"/>
-                          <input type="submit" name="comment" value="comment"/>
-                        </form>
-          </p>
-                {% endfor %}
-        </body>
+    <div class="row subheading"> About Me </div>
+    <div class="textaboutme"> {{aboutme}} </div>
+
+    <div class="row subheading"> Education History </div>
+    {% for epost in eposts %}
+    <div class="edupost">
+        <div class="row">
+          <div class="col-md-4">
+            <img class="icon" src="{{epost.image_url}}" alt="inst_img" />
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="institution"> {{epost.institution}} </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="major">Major: {{epost.major}} </div>
+              </div>
+              <div class="col-md-4">
+                <div class="time"> {{epost.start_time}} - {{epost.end_time}} </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if admin_logged_in %}
+        <form action="/e/delete/" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-10"> </div>
+            <div class="col-md-2">
+              <div class="btn btn-primary">
+                Delete<input type="submit" name="delete" value="{{epost.epostid}}"/>
+              </div>
+            </div>
+          </div>
+        </form>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    {% if admin_logged_in %}
+    <div class="row">
+      <div class="col-md-10"> </div>
+      <div class="col-md-2">
+        <a href="/e/" class="btn btn-primary"> Add </a>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="row">
+      <div class="col-md-6">
+        <a href="/work/"> <div class="subheading"> Work Experience </div> </a>
+      </div>
+      <div class="col-md-6">
+        <a href="/projects/"> <div class="subheading"> Programming Projects </div> </a>
+      </div>
+    </div>
+
+    {% if admin_logged_in %}
+    <div class="row">
+      <div class="col-md-10"> </div>
+      <div class="col-md-2">
+        <form action="/logout/" method="post" enctype="multipart/form-data">
+          <input type="submit" class="btn btn-primary" name="logout" value="Admin Logout">
+        </form>
+      </div>
+    </div>
+    {% else %}
+    <div class="row">
+      <div class="col-md-10"> </div>
+      <div class="col-md-2">
+        <a href="/login/"> Admin Login </a>
+      </div>
+    </div>
+    {% endif %}
+  </body>
 </html>

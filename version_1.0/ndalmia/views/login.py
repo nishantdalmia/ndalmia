@@ -1,35 +1,35 @@
 """
-Insta485 login view.
+ndalmia login view.
 
 URLs include:
-/accounts/login/
-/accounts/logout/
+/login/
+/logout/
 """
 from flask import request, redirect, url_for, make_response, render_template
-import insta485
-from insta485.views.util import validate_password
+import ndalmia
 
-
-@insta485.app.route('/accounts/login/', methods=['GET', 'POST'])
+@ndalmia.app.route('/login/', methods=['GET', 'POST'])
 def login():
-    """Display /accounts/login/ route."""
-    if 'username' in request.cookies:
+    """Display /login/ route."""
+    if 'admin' in request.cookies:
         return redirect(url_for('show_index'))
 
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        validate_password(username, password)
-        response = make_response(redirect(url_for('show_index')))
-        response.set_cookie('username', username)
-        return response
+        if request.form.get('admin_code') and request.form['admin_code'] == "$IAMADMIN$":
+            response = make_response(redirect(url_for('show_index')))
+            response.set_cookie('admin', 'admin')
+            return response
+        return redirect(url_for('show_index'))
 
-    return render_template('login.html')
+    context = {'name': "Nishant Dalmia",
+               'email': "ndalmia@umich.edu",
+               'location': "Ann Arbor, MI"}
+    return render_template('login.html', **context)
 
 
-@insta485.app.route('/accounts/logout/', methods=['POST'])
+@ndalmia.app.route('/logout/', methods=['POST'])
 def logout():
     """Logout."""
-    response = make_response(redirect(url_for('login')))
-    response.delete_cookie('username')
+    response = make_response(redirect(url_for('show_index')))
+    response.delete_cookie('admin')
     return response

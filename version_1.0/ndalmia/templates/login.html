@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-        <head>
-                <link rel="stylesheet" href="/static/css/style.css">
-                <title>Insta485</title>
-        </head>
-        <body>
-                <div class="topright">
-                        <a href="/accounts/login/" > <b>login</b> </a></div>
-                <h1>
-                        <a href="/"><img class = "logo" src="/static/images/insta485logo.png" alt="insta485_logo"/></a>
-                         Insta485 </h1>
-                <hr>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>ndalmia</title>
+  </head>
+  <body>
+    <div class="row heading">
+      <div class="col-md-4">
+        <a href="/" > <img class="head_icon" src="/static/images/ndalmia_casual_icon.jpg" /> </a>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="name"> {{name}} </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="emailocation"> {{email}} </div>
+          </div>
+          <div class="col-md-4">
+            <div class="emailocation"> {{location}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                <!-- DO NOT CHANGE THIS (aside from styling) -->
-                <form action="/accounts/login/" method="post" enctype="multipart/form-data">
-                  Username<input type="text" name="username"/> <br>
-                  Password<input type="password" name="password"/> <br>
-                  <input type="submit" value="login"/>
-                </form>
-                <div> Don't have an account? <a href="/accounts/create/"> <b>Sign Up</b> </a></div>
-        </body>
+    <!-- DO NOT CHANGE THIS (aside from styling) -->
+    <form action="/login/" method="post" enctype="multipart/form-data">
+      <div class="row admin_code">
+        <label class="form-label">Admin Code</label>
+        <input type="text" class="form-control" name="admin_code" placeholder="Secret Code"> <br>
+      </div>
+    </form>
+    </div>
+  </body>
 </html>

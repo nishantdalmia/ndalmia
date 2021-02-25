@@ -1,56 +1,35 @@
 PRAGMA foreign_keys = ON;
 
-CREATE TABLE users(
-  	username VARCHAR(20) NOT NULL,
-  	fullname VARCHAR(40) NOT NULL,
-  	email VARCHAR(40) NOT NULL,
-  	filename VARCHAR(64) NOT NULL,
-  	password VARCHAR(256) NOT NULL,
-  	created DATETIME DEFAULT CURRENT_TIMESTAMP,
-  	PRIMARY KEY(username)
+CREATE TABLE wposts(
+    wpostid INTEGER,
+    filename VARCHAR(20) NOT NULL,
+    company VARCHAR(40) NOT NULL,
+    title VARCHAR(40) NOT NULL,
+    description VARCHAR(1000) NOT NULL,
+    location VARCHAR(40) NOT NULL,
+    start_time VARCHAR(20) NOT NULL,
+    end_time VARCHAR(20) NOT NULL,
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(wpostid)
 );
 
-CREATE TABLE posts(
-	postid INTEGER,
-  	filename VARCHAR(64) NOT NULL,
- 	owner VARCHAR(20) REFERENCES users(username)
-		ON UPDATE CASCADE
-		ON DELETE CASCADE,
-  	created DATETIME DEFAULT CURRENT_TIMESTAMP,
-  	PRIMARY KEY(postid)
+CREATE TABLE pposts(
+    ppostid INTEGER,
+    title VARCHAR(40) NOT NULL,
+    description VARCHAR(1000) NOT NULL,
+    location VARCHAR(40) NOT NULL,
+    link VARCHAR(200) NOT NULL,
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(ppostid)
 );
 
-CREATE TABLE following(
-  	username1 VARCHAR(20) REFERENCES users(username)
-		ON UPDATE CASCADE
-		ON DELETE CASCADE,
-  	username2 VARCHAR(20) REFERENCES users(username)
-		ON UPDATE CASCADE
-		ON DELETE CASCADE,
- 	created DATETIME DEFAULT CURRENT_TIMESTAMP,
-  	PRIMARY KEY(username1, username2)
-);
-
-CREATE TABLE comments(
-	commentid INTEGER,
-	owner VARCHAR(20) REFERENCES users(username) 
-		ON UPDATE CASCADE 
-		ON DELETE CASCADE,
-	postid INT REFERENCES posts(postid) 
-		ON UPDATE CASCADE 
-		ON DELETE CASCADE,
-	text VARCHAR(1024) NOT NULL,
-	created DATETIME DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY(commentid)
-);
-
-CREATE TABLE likes(
-	owner VARCHAR(20) REFERENCES users(username) 
-		ON UPDATE CASCADE 
-		ON DELETE CASCADE,
-	postid INT REFERENCES posts(postid) 
-		ON UPDATE CASCADE 
-		ON DELETE CASCADE,
-	created DATETIME DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY(owner, postid)
+CREATE TABLE eposts(
+    epostid INTEGER,
+    filename VARCHAR(20) NOT NULL,
+    institution VARCHAR(40) NOT NULL,
+    major VARCHAR(40) NOT NULL,
+    start_time VARCHAR(20) NOT NULL,
+    end_time VARCHAR(20) NOT NULL,
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(epostid)
 );

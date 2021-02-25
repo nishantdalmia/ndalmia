@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>ndalmia</title>
+  </head>
+  <body>
+    <div class="row heading">
+      <div class="col-md-4">
+        <a href="/" > <img class="head_icon" src="/static/images/ndalmia_casual_icon.jpg" /> </a>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="name"> {{name}} </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="emailocation"> {{email}} </div>
+          </div>
+          <div class="col-md-4">
+            <div class="emailocation"> {{location}} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      <form action="/e/" class="adders" method="post" enctype="multipart/form-data">
+        <div class="row">
+          <label class="form-label">Image</label>
+          <input type="file" name="file"/>
+        </div>
+        <div class="row">
+          <label class="form-label">Institution</label>
+          <input type="text" class="form-control" name="institution" placeholder="University of Michigan - Ann Arbor">
+        </div>
+        <div class="row">
+          <label class="form-label">Major</label>
+          <input type="text" class="form-control" name="major" placeholder="Computer Science">
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">Begin Date</label>
+            <input type="text" class="form-control" name="start_time" placeholder="Fall 2017">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">End Date</label>
+            <input type="text" class="form-control" name="end_time" placeholder="Winter 2021">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10"> </div>
+          <div class="col-md-2">
+            <input type="submit" class="btn btn-primary" name="create_epost" value="Upload"/>
+          </div>
+        </div>
+      </form>
+    </p>
+  </body>
+</html>
