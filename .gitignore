@@ -1,13 +1,15 @@
 # Python
 *.pyc
-version_1.0/__pycache__/
+__pycache__/
 *.egg-info*
-version_1.0/dist/
-version_1.0/env/
-version_1.0/venv/
-version_1.0/venv3/
-version_1.0/.venv/
-version_1.0/.pytest_cache
+dist/
+env/
+env/
+venv3/
+.venv/
+.pytest_cache
+personalwebsite.pem
+publicDNS.txt
 
 # Database
-version_1.0/var/
+# var/
