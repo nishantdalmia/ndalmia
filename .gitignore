@@ -2,14 +2,14 @@
 *.pyc
 __pycache__/
 *.egg-info*
-dist/
-env/
-env/
-venv3/
-.venv/
-.pytest_cache
-personalwebsite.pem
-publicDNS.txt
+/dist/
+/env/
+/env/
+/venv3/
+/.venv/
+/.pytest_cache
+/personalwebsite.pem
+/publicDNS.txt
 
 # Database
 # var/
