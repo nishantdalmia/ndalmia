@@ -22,7 +22,7 @@ def show_index():
     eposts = cur.fetchall()
     for epost in eposts:
         epost['image_url'] = "/uploads/" + epost['filename']
-    aboutme = 'I am currently a senior pursuing a major in ' + 'Computer Science and a minor in Physics at the University of ' + 'Michigan at Ann Arbor. I am ' + 'passionate about my work and what I do. ' + 'I consider myself a person who can solve problems ' + 'be it in my academic, work or personal life. I am ' + 'eager to work in and with the Technology community to ' + 'learn more about it and add value to it. '
+    aboutme = 'I am a Computer Scientist from the University of ' + 'Michigan at Ann Arbor. I am ' + 'passionate about my work and what I do. ' + 'I consider myself a person who can solve problems ' + 'be it in my academic, work or personal life. I am ' + 'eager to work in and with the Technology community to ' + 'learn more about it and add value to it. '
     admin_logged_in = 'admin' in request.cookies
 
     context = {'admin_logged_in': admin_logged_in,
