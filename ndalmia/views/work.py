@@ -20,6 +20,7 @@ def work():
     context = {'admin_logged_in': admin_logged_in,
                'name': "Nishant Dalmia",
                'email': "ndalmia@umich.edu",
-               'location': "Ann Arbor, MI",
+               'rmail': "ndalmia.recruit@gmail.com",
+               'location': "Los Gatos, CA",
                'wposts': wposts}
     return render_template('work.html', **context)

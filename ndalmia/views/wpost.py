@@ -33,7 +33,8 @@ def wpost():
 
     context = {'name': "Nishant Dalmia",
                'email': "ndalmia@umich.edu",
-               'location': "Ann Arbor, MI"}
+               'rmail': "ndalmia.recruit@gmail.com",
+               'location': "Los Gatos, CA"}
     return render_template('wpost.html', **context)
 
 @ndalmia.app.route('/w/delete/', methods=['GET', 'POST'])

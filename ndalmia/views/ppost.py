@@ -23,7 +23,8 @@ def ppost():
 
     context = {'name': "Nishant Dalmia",
                'email': "ndalmia@umich.edu",
-               'location': "Ann Arbor, MI"}
+               'rmail': "ndalmia.recruit@gmail.com",
+               'location': "Los Gatos, CA"}
     return render_template('ppost.html', **context)
 
 

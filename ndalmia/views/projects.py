@@ -18,6 +18,7 @@ def projects():
     context = {'admin_logged_in': admin_logged_in,
                'name': "Nishant Dalmia",
                'email': "ndalmia@umich.edu",
-               'location': "Ann Arbor, MI",
+               'rmail': "ndalmia.recruit@gmail.com",
+               'location': "Los Gatos, CA",
                'pposts': pposts}
     return render_template('projects.html', **context)

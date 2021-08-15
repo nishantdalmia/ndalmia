@@ -27,8 +27,9 @@ def show_index():
 
     context = {'admin_logged_in': admin_logged_in,
                'name': "Nishant Dalmia",
-               'email': "ndalmia@umich.edu",
-               'location': "Ann Arbor, MI",
+               'email': "n@umich.edu",
+               'rmail': "ndalmia.recruit@gmail.com",
+               'location': "Los Gatos, CA",
                'aboutme': aboutme,
                'eposts': eposts}
     return render_template('index.html', **context)
