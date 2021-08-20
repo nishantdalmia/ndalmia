@@ -27,7 +27,7 @@ def show_index():
 
     context = {'admin_logged_in': admin_logged_in,
                'name': "Nishant Dalmia",
-               'email': "n@umich.edu",
+               'email': "ndalmia@umich.edu",
                'rmail': "ndalmia.recruit@gmail.com",
                'location': "Los Gatos, CA",
                'aboutme': aboutme,
